@@ -1,0 +1,201 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<link rel="StyleSheet" href="style.css" type="text/css">
+<TITLE>** 회원가입 **</TITLE>
+<script language="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { 
+form = document.join;
+if(winName == "userid_check"){
+if(!checkValue(form.userid, '아이디', 5, 16)){
+return;
+}
+theURL = theURL+"?id="+form.userid.value;
+}
+window.open(theURL,winName,features);
+}
+function checkValue(target, cmt, lmin, lmax){
+var Alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+var Digit = '1234567890';
+var astr = Alpha+Digit;
+var i;
+var tValue = target.value;
+if(tValue.length < lmin || tValue.length > lmax){
+if(lmin==lmax) alert(cmt+'는'+lmin+'Byte이어야 합니다.');
+else alert(cmt+'는'+lmin+'~'+lmax+'Byte 이내로 입력하셔야 합니다.');
+target.focus();
+return false;
+}
+if(astr.length > 1){
+for (i=0; i<tValue.length; i++){
+if(astr.indexOf(tValue.substring(i,i+1))<0){
+alert(cmt+'에 허용할 수 없는 문자가 입력되었습니다.');
+target.focus();
+return false;
+}
+}
+}
+return true;
+}
+
+function doSubmit() {
+form = document.join;
+
+if(!form.userid.value){
+alert('아이디를 입력하지 않았습니다.');
+form.userid.focus();
+return;
+}
+
+if(!checkValue(form.userid, '아이디', 5, 16)){
+return;
+}
+
+if(!form.password.value){
+alert('비밀번호를 입력하지 않았습니다.');
+form.password.focus();
+return;
+}
+
+if(form.password.value != form.password2.value){
+alert('비밀번호가 일치하지 않았습니다.');
+form.password.value = "";
+form.password2.value = "";
+form.password.focus();
+return;
+}
+
+if(form.userid.value == form.password.value){
+alert("아이디와 비밀번호를 서로 다르게 입력하세요!");
+form.password.value = "";
+form.password2.value = "";
+form.password.focus();
+return;
+}
+
+
+if(!form.name.value){
+alert('이름을 입력하지 않았습니다.');
+form.username.focus();
+return;
+}
+
+if (!checkValue(form.password,'비밀번호',4,12)){
+return;
+}
+
+if(!form.age.value){
+alert('나이를 입력하지 않았습니다.');
+form.age.focus();
+return;
+}
+
+if(!form.phone2.value){
+alert('핸드폰번호를 입력하지 않았습니다.');
+form.phone2.focus();
+return;
+}
+
+if(isNaN(form.phone2.value)){
+alert('핸드폰 번호는 숫자로 입력해주세요.');
+form.phone2.focus();
+return;
+}
+
+if(!form.phone3.value){
+alert('핸드폰번호를 입력하지 않았습니다.');
+form.phone3.focus();
+return;
+}
+
+if(isNaN(form.phone3.value)){
+alert('핸드폰번호는 숫자로 입력해주세요.');
+form.phone3.focus();
+return;
+}
+
+if(form.email.value){
+if(form.email.value.indexOf("@") < 0){
+alert('Email주소 형식이 틀립니다.');
+form.email.focus();
+return;
+}
+
+if(form.email.value.indexOf(".") < 0){
+alert('Email 도메인 주소가 틀립니다.');
+form.email.focus();
+return;
+}
+}
+
+form.submit();
+
+}
+</script>
+</HEAD>
+<body bgcolor="#FFFFFF" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<TABLE align=center cellpadding=8 cellspacing=8 width='650' topmargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" >
+<TR>
+<TD width="650">
+<form name="join" method="post" action="insert.jsp">
+<table width="850" height="400" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td width="15%" align="right"><font color="#FF0000" size=1>★</font><font class="style1">아이디&nbsp;&nbsp;</font></td>
+<td width="75%">&nbsp;
+<input type="text" name="userid" size="16" maxlength="16" class="input_style1">
+<input type="button" value="중복확인" onClick="MM_openBrWindow( 'userid_check.jsp', 'userid_check', 'width=330, height=200')">
+<font class="style2">(영문+숫자 5~16자리) <font color="#73EAA8">중복 확인 절차를 거쳐야 합니다.</font></font></td>
+</tr>
+<td width="15%" align="right" ><font color="#FF0000" size=1>★</font><font class="style1">비밀번호&nbsp;&nbsp;</font></td>
+<td width="75%">&nbsp; 
+<input type="password" name="password" size="12" maxlength="12" class="input_style1"><font class="style2">&nbsp;(영문+숫자 4~12자리)</font>
+</td>
+</tr> 
+<td width="15%" align="right" ><font color="#FF0000" size=1>★</font><font class="style1">비밀번호 확인&nbsp;&nbsp;</font></td>
+<td width="75%">&nbsp; 
+<input type="password" name="password2" size="12" maxlength="12" class="input_style1">
+</td>
+</tr> 
+<tr> 
+<td width="15%" align="right"><font color="#FF0000" size=1>★</font><font class="style1">이름&nbsp;&nbsp;</font></td>
+<td width="75%">&nbsp;&nbsp;<input type="text" name="name" size="12" maxlength="12" class="input_style1"> </td>
+</tr>
+<tr> 
+<td width="15%" align="right"><font color="#FF0000" size=1>★</font><font class="style1">나이&nbsp;&nbsp;</font></td>
+<td width="75%">&nbsp;&nbsp;<input type="number" min="0" max="100" name="age" size="12" maxlength="12" class="input_style1"> </td>
+</tr>
+<tr > 
+<td width="15%" align="right"><font color="#FF0000" size=1>★</font><font class="style1">핸드폰&nbsp;&nbsp; </font></td>
+ <td width="75%">&nbsp; 
+<select name="phone1">
+<option value="010">010</option> 
+<option value="011">011</option>
+<option value="016">016</option>
+<option value="017">017</option>
+<option value="018">018</option>
+<option value="019">019</option>
+</select> - 
+<input type="text" name="phone2" size="4" maxlength="4" class="input_style1"> - 
+<input type="text" name="phone3" size="4" maxlength="4" class="input_style1"></td>
+</tr>
+<tr > 
+<td width="15%" align="right"><font class="style1">EMAIL&nbsp;&nbsp;</font></td>
+<td width="75%">&nbsp;&nbsp;<input type="text" name="email" size="20" maxlength="50" class="input_style1"></td>
+</tr>
+</table>
+<br>
+<table width="614" border="0" cellspacing="0" cellpadding="0" align="center" >
+<tr>
+<td width=100% align="center"> 
+<input type="hidden" name="userid_check">
+<input type="button" value="등 록" onClick="doSubmit()">&nbsp;
+    <input type="reset" value="다시쓰기" >&nbsp;
+<input type="button" value="취 소" onClick="javascript:history.go(-1);">
+</td>
+</tr>
+</table>
+</form>
+</TD></TR></TABLE>
+</body>
+</html>
